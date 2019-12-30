@@ -1,0 +1,12 @@
+kind: Pod
+apiVersion: v1
+metadata:
+  name: test-runner
+  namespace: event-example
+  labels:
+    purpose: manual-testing
+spec:
+  containers:
+    - name: test-runner
+      image: docker.io/library/fedora:31
+      command: ["/usr/sbin/init"]

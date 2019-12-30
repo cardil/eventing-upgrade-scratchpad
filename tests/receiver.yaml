@@ -1,0 +1,15 @@
+---
+apiVersion: serving.knative.dev/v1beta1
+kind: Service
+metadata:
+  name: wathola-receiver
+  namespace: event-example
+  labels:
+    purpose: testing
+    serving.knative.dev/visibility: cluster-local
+spec:
+  template:
+    spec:
+      containers:
+        - name: receiver
+          image: quay.io/cardil/wathola-receiver:v0.2.0

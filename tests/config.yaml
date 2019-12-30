@@ -1,0 +1,10 @@
+---
+kind: Secret
+apiVersion: v1
+metadata:
+  name: wathola-config
+  namespace: event-example
+type: Opaque
+data:
+  config.toml: >-
+    W3NlbmRlcl0KYWRkcmVzcyA9ICdodHRwOi8vZGVmYXVsdC1icm9rZXIuZXZlbnQtZXhhbXBsZS5zdmMuY2x1c3Rlci5sb2NhbCcK

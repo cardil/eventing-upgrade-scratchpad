@@ -1,0 +1,19 @@
+kind: Pod
+apiVersion: v1
+metadata:
+  name: wathola-sender
+  namespace: event-example
+  labels:
+    purpose: testing
+spec:
+  containers:
+    - name: sender
+      image: quay.io/cardil/wathola-sender:v0.2.0
+      volumeMounts:
+        - name: wathola-config
+          mountPath: /.config/wathola
+          readOnly: true
+  volumes:
+    - name: wathola-config
+      secret:
+        secretName: wathola-config

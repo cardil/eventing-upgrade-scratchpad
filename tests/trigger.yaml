@@ -1,0 +1,32 @@
+---
+apiVersion: eventing.knative.dev/v1alpha1
+kind: Trigger
+metadata:
+  name: wathola-trigger-step
+  namespace: event-example
+spec:
+  broker: default
+  filter:
+    attributes:
+      type: com.github.cardil.wathola.step
+  subscriber:
+    ref:
+      apiVersion: serving.knative.dev/v1beta1
+      kind: Service
+      name: wathola-receiver
+---
+apiVersion: eventing.knative.dev/v1alpha1
+kind: Trigger
+metadata:
+  name: wathola-trigger-finished
+  namespace: event-example
+spec:
+  broker: default
+  filter:
+    attributes:
+      type: com.github.cardil.wathola.finished
+  subscriber:
+    ref:
+      apiVersion: serving.knative.dev/v1beta1
+      kind: Service
+      name: wathola-receiver
