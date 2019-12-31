@@ -8,7 +8,7 @@ metadata:
 spec:
   containers:
     - name: sender
-      image: quay.io/cardil/wathola-sender:v0.4.1
+      image: quay.io/cardil/wathola-sender:v0.4.2
       volumeMounts:
         - name: wathola-config
           mountPath: /.config/wathola
