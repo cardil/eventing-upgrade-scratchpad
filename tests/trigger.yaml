@@ -13,7 +13,7 @@ spec:
     ref:
       apiVersion: serving.knative.dev/v1beta1
       kind: Service
-      name: wathola-receiver
+      name: wathola-forwarder
 ---
 apiVersion: eventing.knative.dev/v1alpha1
 kind: Trigger
@@ -29,4 +29,4 @@ spec:
     ref:
       apiVersion: serving.knative.dev/v1beta1
       kind: Service
-      name: wathola-receiver
+      name: wathola-forwarder

@@ -1,15 +1,36 @@
 ---
-apiVersion: serving.knative.dev/v1beta1
+kind: Pod
+apiVersion: v1
+metadata:
+  name: wathola-receiver
+  namespace: event-example
+  labels:
+    app: wathola-receiver
+    purpose: testing
+spec:
+  containers:
+    - name: receiver
+      image: quay.io/cardil/wathola-receiver:v0.4.1
+      volumeMounts:
+        - name: wathola-config
+          mountPath: /.config/wathola
+          readOnly: true
+  volumes:
+    - name: wathola-config
+      secret:
+        secretName: wathola-config
+---
 kind: Service
+apiVersion: v1
 metadata:
   name: wathola-receiver
   namespace: event-example
   labels:
     purpose: testing
-    serving.knative.dev/visibility: cluster-local
 spec:
-  template:
-    spec:
-      containers:
-        - name: receiver
-          image: quay.io/cardil/wathola-receiver:v0.2.0
+  selector:
+    app: wathola-receiver
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 22111
