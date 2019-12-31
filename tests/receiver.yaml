@@ -1,6 +1,6 @@
 ---
-kind: Pod
-apiVersion: v1
+kind: Deployment
+apiVersion: apps/v1
 metadata:
   name: wathola-receiver
   namespace: event-example
@@ -8,17 +8,26 @@ metadata:
     app: wathola-receiver
     purpose: testing
 spec:
-  containers:
-    - name: receiver
-      image: quay.io/cardil/wathola-receiver:v0.4.1
-      volumeMounts:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: wathola-receiver
+  template:
+    metadata:
+      labels:
+        app: wathola-receiver
+    spec:
+      containers:
+        - name: receiver
+          image: quay.io/cardil/wathola-receiver:v0.4.1
+          volumeMounts:
+            - name: wathola-config
+              mountPath: /.config/wathola
+              readOnly: true
+      volumes:
         - name: wathola-config
-          mountPath: /.config/wathola
-          readOnly: true
-  volumes:
-    - name: wathola-config
-      secret:
-        secretName: wathola-config
+          secret:
+            secretName: wathola-config
 ---
 kind: Service
 apiVersion: v1
