@@ -12,11 +12,14 @@ spec:
     spec:
       containers:
         - name: forwarder
-          image: quay.io/cardil/wathola-forwarder:v0.4.2
+          image: quay.io/cardil/wathola-forwarder:v0.5.2
           volumeMounts:
             - name: wathola-config
               mountPath: /.config/wathola
               readOnly: true
+          readinessProbe:
+            httpGet:
+              path: /healthz
       volumes:
         - name: wathola-config
           secret:
