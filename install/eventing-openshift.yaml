@@ -20,32 +20,4 @@ spec:
   name: knative-eventing-operator
   source: community-operators
   sourceNamespace: openshift-marketplace
----
-apiVersion: v1
-kind: Namespace
-metadata:
-  name: knative-serving
----
-apiVersion: serving.knative.dev/v1alpha1
-kind: KnativeServing
-metadata:
-  name: knative-serving
-  namespace: knative-serving
----
-apiVersion: v1
-kind: Namespace
-metadata:
-  name: knative-eventing
----
-apiVersion: eventing.knative.dev/v1alpha1
-kind: KnativeEventing
-metadata:
-  name: knative-eventing
-  namespace: knative-eventing
----
-apiVersion: v1
-kind: Namespace
-metadata:
-  name: event-example
-  labels:
-    knative-eventing-injection: enabled
+
