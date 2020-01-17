@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
         - name: receiver
-          image: quay.io/cardil/wathola-receiver:v0.6.0
+          image: quay.io/cardil/wathola-receiver:v0.7.0
           volumeMounts:
             - name: wathola-config
               mountPath: /.config/wathola

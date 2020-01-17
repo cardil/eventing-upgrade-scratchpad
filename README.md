@@ -24,6 +24,8 @@ Scratchpad for eventing upgrade tests
 1. Run `kubectl apply -f https://github.com/knative/serving/releases/download/v0.11.0/serving.yaml`
 1. Run `kubectl apply -f https://github.com/knative/eventing/releases/download/v0.11.0/release.yaml`
 1. Wait until all pods in `knative-serving` and `knative-eventing` are running
+1. Run `kubectl apply -f install/event-example.yaml`
+1. Wait until `kubectl get broker default -n event-example` reports Ready
 
 ## Tests
 

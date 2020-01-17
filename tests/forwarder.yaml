@@ -12,7 +12,7 @@ spec:
     spec:
       containers:
         - name: forwarder
-          image: quay.io/cardil/wathola-forwarder:v0.6.0
+          image: quay.io/cardil/wathola-forwarder:v0.7.0
           volumeMounts:
             - name: wathola-config
               mountPath: /.config/wathola
