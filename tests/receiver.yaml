@@ -39,20 +39,9 @@ metadata:
 spec:
   selector:
     app: wathola-receiver
+  type: NodePort
   ports:
     - name: http
       protocol: TCP
       port: 80
       targetPort: 22111
----
-apiVersion: route.openshift.io/v1
-kind: Route
-metadata:
-  name: wathola-receiver
-  namespace: event-example
-spec:
-  to:
-    kind: Service
-    name: wathola-receiver
-  port:
-    targetPort: http
