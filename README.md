@@ -30,6 +30,7 @@ Scratchpad for eventing upgrade tests
 ## Tests
 
 1. Run `for y in tests/config.yaml tests/trigger.yaml tests/receiver.yaml tests/forwarder.yaml; do kubectl apply -f $y; done`
+1. Wait until `kubectl get triggers -n event-example` reports ready
 1. Wait until `kubectl get deployment $(kubectl get ksvc -n event-example -o jsonpath='{.items[0].status.latestCreatedRevisionName}')-deployment -n event-example` report that Knative Service scaled to zero `READY: 0/0`
 1. Run `kubectl apply -f tests/sender.yaml` and wait until forwarder pods scale up `READY: 14/14`
 1. Run `kubectl delete -f tests/sender.yaml`. Receiver pod should receive finished event and report state. You should observe missing
