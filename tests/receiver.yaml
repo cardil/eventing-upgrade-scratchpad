@@ -26,8 +26,8 @@ spec:
               readOnly: true
       volumes:
         - name: wathola-config
-          secret:
-            secretName: wathola-config
+          configMap:
+            name: wathola-config
 ---
 kind: Service
 apiVersion: v1
@@ -39,7 +39,7 @@ metadata:
 spec:
   selector:
     app: wathola-receiver
-  type: NodePort
+  type: LoadBalancer
   ports:
     - name: http
       protocol: TCP

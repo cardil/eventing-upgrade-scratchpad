@@ -1,13 +1,12 @@
 ---
-kind: Secret
+kind: ConfigMap
 apiVersion: v1
 metadata:
   name: wathola-config
   namespace: event-example
-type: Opaque
-stringData:
+data:
   config.toml: |-
-    # logLevel = 5
+    # logLevel = 5 # DEBUG(5), TRACE(6)
     [sender]
     address = 'http://default-broker.event-example.svc.cluster.local'
     [forwarder]

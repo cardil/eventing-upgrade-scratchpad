@@ -22,6 +22,6 @@ spec:
               path: /healthz
       volumes:
         - name: wathola-config
-          secret:
-            secretName: wathola-config
+          configMap:
+            name: wathola-config
   
